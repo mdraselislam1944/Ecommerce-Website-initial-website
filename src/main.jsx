@@ -17,6 +17,7 @@ import Dashboard from './components/Dashboard.jsx';
 import Users from './components/Dashboard/Users.jsx';
 import AddProducts from './components/Dashboard/AddProducts.jsx';
 import IndividualProducts from './components/IndividualProducts.jsx';
+import SelectedProducts from './components/Dashboard/SelectedProducts.jsx';
 
 
 const router = createBrowserRouter([
@@ -51,15 +52,23 @@ const router = createBrowserRouter([
   {
     path:'dashboard',
     element:<Dashboard/>,
+    loader:()=>fetch('http://localhost:4000/users'),
     children:[
       {
+        path:'',
+        element:<SelectedProducts/>,
+        loader:()=>fetch('http://localhost:4000/userProducts')
+      },
+      {
         path:"users",
-        element:<Users/>
+        element:<Users/>,
+        loader:()=>fetch('http://localhost:4000/users'),
       },
       {
         path:'addProducts',
         element:<AddProducts/>
       },
+      
     ]
   },
 ]);

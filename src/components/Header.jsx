@@ -28,7 +28,7 @@ const Header = () => {
                     <button className='btn btn-info'>Search</button>
                 </div>
                 <div className='flex  items-center'>
-                    <h3 className='flex items-center'> <FaCartArrowDown className='mx-2' /> Cart</h3>
+                   <Link to='dashboard'><h3 className='flex items-center'> <FaCartArrowDown className='mx-2' /> Cart</h3></Link>
                    {
                     user?.user?<><Link className='btn btn-secondary mx-5' to='dashboard'>Dashboard</Link><button className='btn btn-accent grid grid-cols-1 pt-2 pb-10' onClick={handleLogout}>
                         <p>{user?.user?.displayName}</p>

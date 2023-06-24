@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaCartArrowDown, FaHome, FaUsers } from 'react-icons/fa';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../Providers/AuthProviders';
 
 const Dashboard = () => {
+    const usersDB=useLoaderData();
+    const users=useContext(AuthContext);
+    const user=usersDB.find(user=>user.email==users?.user?.email)
+    if(user){
+        console.log(user.role);
+    }
     return (
         <div className="grid grid-cols-4 gap-4">
             <div className="bg-yellow-200 text-center h-[100vh]">

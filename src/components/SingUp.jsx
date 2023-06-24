@@ -14,9 +14,27 @@ const SignUp = () => {
         createUser(email, password)
             .then(result => {
                 console.log(result);
-                form.reset();
                 updateProfileDetail(name)
                     .then(result => {
+                        const user = {
+                            name:name,
+                            email: email,
+                            role: 'buyer',
+                        }
+                        fetch('http://localhost:4000/users', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(user)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log(data);
+                                alert('added successfully');
+                                 form.reset();
+                            })
+                            .catch(error => console.log(error.message));
                     }).catch((error) => {
                         console.log(error.message);
                     });
