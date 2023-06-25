@@ -27,7 +27,7 @@ const ProductDetails = () => {
             .then(data => {
                 console.log(data);
                 alert('added successfully');
-                navigate('/dashboard');
+                navigate('/');
             })
             .catch(error => console.log(error.message));
     }

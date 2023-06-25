@@ -18,12 +18,17 @@ import Users from './components/Dashboard/Users.jsx';
 import AddProducts from './components/Dashboard/AddProducts.jsx';
 import IndividualProducts from './components/IndividualProducts.jsx';
 import SelectedProducts from './components/Dashboard/SelectedProducts.jsx';
+import SearchProduct from './components/SearchProduct.jsx';
+import PaymentHistory from './components/Dashboard/PaymentHistory.jsx';
+import AdminPage from './components/Dashboard/AdminPage.jsx';
+import DashboardDescription from './components/Dashboard/DashboardDescription.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element:<Main/>,
+    loader:()=> fetch('http://localhost:4000/userProducts'),
     children:[
       {
         path:"/",
@@ -46,6 +51,11 @@ const router = createBrowserRouter([
       {
         path:"/signUp",
         element:<SingUp/>
+      },
+      {
+        path:"/search/:id",
+        element:<SearchProduct/>,
+        loader:({params})=>fetch(`http://localhost:4000/products/selected/${params.id}`),
       }
     ]
   },
@@ -54,10 +64,19 @@ const router = createBrowserRouter([
     element:<Dashboard/>,
     loader:()=>fetch('http://localhost:4000/users'),
     children:[
+      // {
+      //   path:"",
+      //   element:<DashboardDescription/>,
+      //   loader:()=>fetch('http://localhost:4000/users'),
+      // },
       {
-        path:'',
+        path:'userPage',
         element:<SelectedProducts/>,
         loader:()=>fetch('http://localhost:4000/userProducts')
+      },
+      {
+        path:"adminPage",
+        element:<AdminPage/>,
       },
       {
         path:"users",
@@ -68,7 +87,11 @@ const router = createBrowserRouter([
         path:'addProducts',
         element:<AddProducts/>
       },
-      
+      {
+        path:"paymentHistory",
+        element:<PaymentHistory/>,
+        loader:()=>fetch('http://localhost:4000/userProducts')
+      }
     ]
   },
 ]);
