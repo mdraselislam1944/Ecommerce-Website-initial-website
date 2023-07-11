@@ -30,7 +30,7 @@ const Header = ({ product }) => {
         navigate(`/search/${search}`)
     }
     // useEffect(()=>{
-    //     fetch('http://localhost:4000/userProducts')
+    //     fetch('https://e-commerce-server-site-mocha.vercel.app/userProducts')
     //     .then(res=>res.json())
     //     .then(data=>{
     //         const filterProduct=data.filter(product=>product.email==users?.user?.email&&product.status!='notPay')
@@ -40,10 +40,10 @@ const Header = ({ product }) => {
     // },[])
 
 
-    console.log(totalProduct);
+    // console.log(totalProduct);
     return (
-        <>
-            <div className='flex justify-between items-center  bg-black text-white p-5'>
+        < >
+            <div data-theme={"dark"} className='flex justify-between items-center  bg-black text-white p-5'>
                 <div className='flex  items-center'>
                     <h1 className='mx-5 text-4xl'>REZZYSTYLE</h1>
                     <Link to='/' className='btn btn-info' >Home</Link>
@@ -61,7 +61,7 @@ const Header = ({ product }) => {
                                 <div>{totalProduct.length}</div>
                                 <div  > <FaCartArrowDown /></div>
                             </div>
-                            <span className='text-xl'>card</span></h3></Link>
+                            <span className='text-xl'>cart</span></h3></Link>
                     }
                     {
                         user?.user ? <><Link className='btn btn-secondary mx-5' to='dashboard'>Dashboard</Link><button className='btn btn-accent grid grid-cols-1 pt-2 pb-10' onClick={handleLogout}>
@@ -71,12 +71,13 @@ const Header = ({ product }) => {
                     }
                 </div>
             </div>
-            <div className='flex items-center  bg-green-300 text-white p-3'>
-                <Link to='individualProduct/baishakhi'><button className='btn  btn-neutral mx-8 lg:ms-96'>BAISHAKI STYLES</button></Link>
-                <Link to='individualProduct/eidcollection'><button className="btn  btn-neutral mx-8">EID COLLECTION</button></Link>
-                <Link to='individualProduct/gents'><button className="btn  btn-neutral mx-8">GENTS</button></Link>
+            <div data-theme={"dark"} className='flex items-center  bg-blue-400 text-white p-3'>
+                <Link to='individualProduct/newArival'><button className='btn  btn-neutral mx-8 lg:ms-72'>New Arival</button></Link>
+                <Link to='individualProduct/gents'><button className="btn  btn-neutral mx-8">Gents</button></Link>
                 <Link to='individualProduct/girls'><button className="btn  btn-neutral mx-8">GIRLS</button></Link>
                 <Link to='individualProduct/kids'><button className="btn  btn-neutral mx-8 ">KIDS</button></Link>
+                <Link to='individualProduct/eidcollection'><button className="btn  btn-neutral mx-8">EID COLLECTION</button></Link>
+                <Link to='individualProduct/baishakhi'><button className="btn  btn-neutral mx-8">Baiskhakhi STYLES</button></Link>
             </div>
         </>
     );

@@ -3,14 +3,14 @@ import React, { useEffect, useState } from 'react';
 import swal from 'sweetalert';
 
 const CheckOut = ({ price, product }) => {
-    console.log(product)
+    // console.log(product)
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:4000/create-payment-intent', {
+        fetch('https://e-commerce-server-site-mocha.vercel.app/create-payment-intent', {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -68,14 +68,14 @@ const CheckOut = ({ price, product }) => {
             });
         }
         // console.log(paymentIntent?.status);
-        console.log(paymentIntent)
+        // console.log(paymentIntent)
         if (paymentIntent?.status) {
             product?.map(product => {
                const paymentHistory={
                 id:paymentIntent.id,
                 }
-                console.log(paymentHistory)
-                fetch(`http://localhost:4000/userProducts/payment/${product?._id}`, {
+                // console.log(paymentHistory)
+                fetch(`https://e-commerce-server-site-mocha.vercel.app/userProducts/payment/${product?._id}`, {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json'

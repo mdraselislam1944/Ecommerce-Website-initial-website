@@ -13,7 +13,7 @@ const SignUp = () => {
         // const photoUrls = form.photo.value;
         createUser(email, password)
             .then(result => {
-                console.log(result);
+                // console.log(result);
                 updateProfileDetail(name)
                     .then(result => {
                         const user = {
@@ -21,7 +21,7 @@ const SignUp = () => {
                             email: email,
                             role: 'buyer',
                         }
-                        fetch('http://localhost:4000/users', {
+                        fetch('https://e-commerce-server-site-mocha.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -30,7 +30,7 @@ const SignUp = () => {
                         })
                             .then(res => res.json())
                             .then(data => {
-                                console.log(data);
+                                // console.log(data);
                                 alert('added successfully');
                                  form.reset();
                             })

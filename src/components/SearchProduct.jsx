@@ -3,11 +3,11 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const SearchProduct = () => {
     const products = useLoaderData();
-    console.log(products);
+    // console.log(products);
     return (
         <div>
             {
-                products[1] ? <>
+                products[0] ? <>
                     <div className='grid grid-cols-3 ms-16 gap-4 my-5'>
 
                         {

@@ -5,7 +5,7 @@ const AdminPage = () => {
     let count =1;
     const [userProduct, setUserProduct] = useState();
     useEffect(() => {
-        fetch('http://localhost:4000/userProducts')
+        fetch('https://e-commerce-server-site-mocha.vercel.app/userProducts')
             .then(res => res.json())
             .then(data => {
                 setUserProduct(data.filter(data => data.status != 'notPay'))
@@ -14,7 +14,7 @@ const AdminPage = () => {
     const totalPrice = userProduct?.reduce((accumulator, product) => {
         return accumulator + parseFloat(product.price);
     }, 0);
-    console.log(userProduct);
+    // console.log(userProduct);
     return (
         <div>
             <h1 className='text-2xl text-center text-orange-400 my-10'>Your Total Balance : ${totalPrice}</h1>

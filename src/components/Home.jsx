@@ -15,20 +15,20 @@ const Home = () => {
             })
     }, [])
     return (
-        <div>
+        <div data-theme={"dark"}>
             <div>
                 <div className="carousel w-full">
                     <div id="item1" className="carousel-item w-full">
-                        <img src={img1} className="w-full h-96" />
+                        <img src={img1} className="w-96 mx-auto h-[550px]" />
                     </div>
                     <div id="item2" className="carousel-item w-full ">
-                        <img src={img2} className="w-full h-96" />
+                        <img src={img2} className="w-96 mx-auto  h-[500px]" />
                     </div>
                     <div id="item3" className="carousel-item w-full">
-                        <img src={img3} className="w-full h-96" />
+                        <img src={img3} className="w-96 mx-auto h-[500px]" />
                     </div>
                     <div id="item4" className="carousel-item w-full">
-                        <img src={img2} className="w-full h-96" />
+                        <img src={img2} className="w-96 mx-auto h-[550px]" />
                     </div>
                 </div>
                 <div className="flex justify-center w-full py-2 gap-2">

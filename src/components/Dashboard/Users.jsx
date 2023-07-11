@@ -4,7 +4,7 @@ import { useLoaderData } from 'react-router-dom';
 const Users = () => {
     let count = 1;
     const usersDB = useLoaderData();
-    console.log(usersDB)
+    // console.log(usersDB)
     return (
         <div className="overflow-x-auto">
             <table className="table">

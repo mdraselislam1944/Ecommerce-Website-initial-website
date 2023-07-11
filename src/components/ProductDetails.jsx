@@ -6,7 +6,8 @@ const ProductDetails = () => {
     const navigate=useNavigate();
     const product = useLoaderData();
     const users = useContext(AuthContext);
-    console.log(users?.user?.email)
+    console.log(product)
+    // console.log(users?.user?.email)
     const handleAddedData = () => {
         const buyProduct = {
             email: users?.user?.email,
@@ -15,8 +16,8 @@ const ProductDetails = () => {
             id: product._id,
             status:'notPay',
         }
-        console.log(buyProduct);
-        fetch('http://localhost:4000/userProducts', {
+        // console.log(buyProduct);
+        fetch('https://e-commerce-server-site-mocha.vercel.app/userProducts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -25,7 +26,7 @@ const ProductDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 alert('added successfully');
                 navigate('/');
             })

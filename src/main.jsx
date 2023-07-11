@@ -22,13 +22,14 @@ import SearchProduct from './components/SearchProduct.jsx';
 import PaymentHistory from './components/Dashboard/PaymentHistory.jsx';
 import AdminPage from './components/Dashboard/AdminPage.jsx';
 import DashboardDescription from './components/Dashboard/DashboardDescription.jsx';
+import PrivateRoute from './PrivateRoute.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element:<Main/>,
-    loader:()=> fetch('http://localhost:4000/userProducts'),
+    loader:()=> fetch('https://e-commerce-server-site-mocha.vercel.app/userProducts'),
     children:[
       {
         path:"/",
@@ -36,13 +37,13 @@ const router = createBrowserRouter([
       },
       {
         path:'/products/:id',
-        element:<ProductDetails/>,
-        loader:({params})=>fetch(`https://e-commerce-server-site-mocha.vercel.app/products/${params.id}`),
+        element:<PrivateRoute><ProductDetails/></PrivateRoute>,
+        loader:({params})=>fetch(`https://e-commerce-server-site-mocha.vercel.app/product/${params.id}`),
       },
       {
         path:'individualProduct/:id',
         element:<IndividualProducts/>,
-        loader:({params})=>fetch(`http://localhost:4000/products/${params.id}`)
+        loader:({params})=>fetch(`https://e-commerce-server-site-mocha.vercel.app/products/${params.id}`)
       },
       {
         path:'/login',
@@ -55,24 +56,24 @@ const router = createBrowserRouter([
       {
         path:"/search/:id",
         element:<SearchProduct/>,
-        loader:({params})=>fetch(`http://localhost:4000/products/selected/${params.id}`),
+        loader:({params})=>fetch(`https://e-commerce-server-site-mocha.vercel.app/products/selected/${params.id}`),
       }
     ]
   },
   {
     path:'dashboard',
     element:<Dashboard/>,
-    loader:()=>fetch('http://localhost:4000/users'),
+    loader:()=>fetch('https://e-commerce-server-site-mocha.vercel.app/users'),
     children:[
       // {
       //   path:"",
       //   element:<DashboardDescription/>,
-      //   loader:()=>fetch('http://localhost:4000/users'),
+      //   loader:()=>fetch('https://e-commerce-server-site-mocha.vercel.app/users'),
       // },
       {
         path:'userPage',
         element:<SelectedProducts/>,
-        loader:()=>fetch('http://localhost:4000/userProducts')
+        loader:()=>fetch('https://e-commerce-server-site-mocha.vercel.app/userProducts')
       },
       {
         path:"adminPage",
@@ -81,7 +82,7 @@ const router = createBrowserRouter([
       {
         path:"users",
         element:<Users/>,
-        loader:()=>fetch('http://localhost:4000/users'),
+        loader:()=>fetch('https://e-commerce-server-site-mocha.vercel.app/users'),
       },
       {
         path:'addProducts',
@@ -90,7 +91,7 @@ const router = createBrowserRouter([
       {
         path:"paymentHistory",
         element:<PaymentHistory/>,
-        loader:()=>fetch('http://localhost:4000/userProducts')
+        loader:()=>fetch('https://e-commerce-server-site-mocha.vercel.app/userProducts')
       }
     ]
   },

@@ -8,7 +8,7 @@ const PaymentHistory = () => {
     const users = useContext(AuthContext);
     const filterProduct = products.filter(product => product.email == users?.user?.email&&product.status!='notPay')
     const [product, setProduct] = useState(filterProduct);
-    console.log(product);
+    // console.log(product);
     return (
         <div className="overflow-x-auto">
         <table className="table">

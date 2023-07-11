@@ -3,7 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const IndividualProducts = () => {
     const products = useLoaderData();
-    console.log(products)
+    // console.log(products)
     return (
         <div>
             <div className='grid grid-cols-3 ms-16 gap-4 my-5'>

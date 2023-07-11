@@ -20,14 +20,14 @@ const SelectedProducts = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:4000/userProducts/${id}`, {
+                    fetch(`https://e-commerce-server-site-mocha.vercel.app/userProducts/${id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
                         .then(data => {
                             setProduct(product?.filter(product => product._id !== id));
-                            console.log(product)
-                            console.log(data);
+                            // console.log(product)
+                            // console.log(data);
                             if (data.deletedCount > 0) {
                                 // alert('delete successful');
                             }

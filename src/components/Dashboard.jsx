@@ -8,7 +8,7 @@ const Dashboard = () => {
     const usersDB = useLoaderData();
     const users = useContext(AuthContext);
     const user = usersDB.find(user => user.email == users?.user?.email);
-    console.log(user?.role)
+    // console.log(user?.role)
     useEffect(() => {
         if (user?.role == 'admin') {
             navigate('/dashboard/adminPage')

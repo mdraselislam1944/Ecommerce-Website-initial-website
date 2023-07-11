@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
-        
+
     }
 
     const signIn = (email, password) => {
@@ -30,18 +30,40 @@ const AuthProvider = ({ children }) => {
     const githubLogin = () => {
         return signInWithPopup(auth, githubProvider);
     }
-    const updateProfileDetail=(name)=>{
-        return  updateProfile(auth.currentUser,{displayName:name});
+    const updateProfileDetail = (name) => {
+        return updateProfile(auth.currentUser, { displayName: name });
     }
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+            // console.log(currentUser.email)
             setLoading(false);
+            if (currentUser && currentUser.email) {
+                const loggedUser = {
+
+                    email: currentUser.email,
+                }
+                fetch('https://e-commerce-server-site-mocha.vercel.app/jwt', {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify(loggedUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // console.log('jwt response', data);
+                        localStorage.setItem('ecommerce-access-token', data.token);
+                    })
+            }
+            else {
+                localStorage.removeItem('ecommerce-access-token');
+            }
         });
 
 
         return () => {
-           return unsubscribe();
+            return unsubscribe();
         }
     }, [])
     const authInfo = {

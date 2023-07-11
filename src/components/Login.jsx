@@ -16,11 +16,11 @@ const Login = () => {
         const password = form.password.value;
         signIn(email, password)
             .then(result => {
-                console.log(result);
+                // console.log(result);
                 alert('login successfully');
                 form.reset();
                 navigate(from, { replace: true })
-
+                // console.log(result.user.email)
             })
             .catch(error => {
                 alert(error.message);
@@ -29,15 +29,16 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         googleLogin()
             .then((result) => {
+                navigate(from, { replace: true })
                 // Authentication successful
             })
             .catch((error) => {
                 if (error.code === 'auth/popup-closed-by-user') {
                     // Handle the popup closed by the user
-                    console.log('Authentication popup closed by the user');
+                    // console.log('Authentication popup closed by the user');
                 } else {
                     // Handle other authentication errors
-                    console.log('Authentication error:', error);
+                    // console.log('Authentication error:', error);
                 }
             });
     }

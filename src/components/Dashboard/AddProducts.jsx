@@ -35,7 +35,7 @@ const AddProducts = () => {
             .then((data) => {
                 addProducts.img = data.data.display_url;
 
-                fetch('http://localhost:4000/products', {
+                fetch('https://e-commerce-server-site-mocha.vercel.app/products', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -44,14 +44,14 @@ const AddProducts = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         swal("products added successfully!", "click the button", "ok");
                         form.reset();
                     })
                     .catch(error => console.log(error.message));
             }
             );
-            console.log(addProducts);
+            // console.log(addProducts);
     }
     return (
         <div className='text-center mx-auto my-5'>
